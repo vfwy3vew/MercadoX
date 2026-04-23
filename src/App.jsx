@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, NavLink } from "react-router-dom";
 import { useState } from "react";
 
 import Home from "./pages/home";
@@ -9,6 +9,7 @@ import Dashboard from "./pages/Dashboard";
 
 import CartButton from "./components/CartButton";
 import CartSidebar from "./components/CartSidebar";
+import "./App.css";
 
 export default function App() {
   const [openCart, setOpenCart] = useState(false);
@@ -21,25 +22,19 @@ export default function App() {
 
   return (
     <>
-      
-      {isLoja && (
-        <>
-          <CartButton openCart={() => setOpenCart(true)} />
-
-          <CartSidebar
-            isOpen={openCart}
-            closeCart={() => setOpenCart(false)}
-          />
-        </>
-      )}
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/cadastro" element={<Cadastro />} />
         <Route path="/loja" element={<Loja />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
+
+      <div className="navbar">
+      <NavLink to="/dashboard">Dashboard</NavLink>
+      <input id="sla" name="sla" placeholder="Buscar..." className="InputPesq"></input>
+      <CartButton openCart={() => setOpenCart(true)} />
+      <CartSidebar isOpen={openCart} closeCart={() => setOpenCart(false)}/>
+    </div>
     </>
   );
 }

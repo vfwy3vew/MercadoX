@@ -9,7 +9,7 @@ export default function CartButton({ openCart }) {
     <div
       onClick={openCart}
       style={{
-        position: "fixed",
+        // position: "fixed",
         top: 20,
         right: 20,
         cursor: "pointer",
